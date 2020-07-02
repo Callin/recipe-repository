@@ -1,0 +1,5 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/reciperepository?autoReconnect=true&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC
+    username: reciperepository
+    password: recipe

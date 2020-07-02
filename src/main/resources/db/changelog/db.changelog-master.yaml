@@ -1,0 +1,78 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: Dragos
+      changes:
+        - createTable:
+            tableName: ingredient
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: weight
+                  type: int
+              - column:
+                  name: measurementUnit
+                  type: varchar(75)
+  - changeSet:
+      id: 2
+      author: Dragos
+      changes:
+        - createTable:
+            tableName: recipe
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: cookingMethod
+                  type: varchar(1000)
+              - column:
+                  name: review
+                  type: varchar(1000)
+              - column:
+                  name: numberOfStars
+                  type: int
+  - changeSet:
+      id: 3
+      author: Dragos
+      changes:
+        - createTable:
+            tableName: recipe_ingredient
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: id_recipe
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: id_ingredient
+                  type: bigint
+                  constraints:
+                    nullable: false
