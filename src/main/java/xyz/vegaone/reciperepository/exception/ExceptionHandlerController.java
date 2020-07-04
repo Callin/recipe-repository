@@ -16,7 +16,7 @@ public class ExceptionHandlerController {
 
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<RecipeErrorResponse> methodArgumentException(MethodArgumentNotValidException exception) {
+    public ResponseEntity<RecipeErrorResponse> handleMethodArgumentException(MethodArgumentNotValidException exception) {
         RecipeErrorResponse recipeErrorResponse = new RecipeErrorResponse();
 
         recipeErrorResponse.setStatus(HttpStatus.BAD_REQUEST.value());

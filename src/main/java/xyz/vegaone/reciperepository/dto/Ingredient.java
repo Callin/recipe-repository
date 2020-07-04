@@ -1,6 +1,5 @@
 package xyz.vegaone.reciperepository.dto;
 
-
 import javax.validation.constraints.NotNull;
 
 public class Ingredient {
@@ -14,6 +13,16 @@ public class Ingredient {
 
     @NotNull(message = "measurementUnit must not be null")
     private String measurementUnit;
+
+    private IngredientType ingredientType;
+
+    public IngredientType getIngredientType() {
+        return ingredientType;
+    }
+
+    public void setIngredientType(IngredientType ingredientType) {
+        this.ingredientType = ingredientType;
+    }
 
     public String getName() {
         return name;
