@@ -1,0 +1,15 @@
+Backlog (work that still needs to be done)
+
+Development work
+- DONE - secure the app - Basic auth in mem
+- secure the app - OAuth2
+- build a UI client (Angular based, Bootstrap maybe?)
+- add support for images
+- integrate with RDS/MariaDb?
+-
+
+Infrastructure work
+- add support for Terraform
+- add support for Docker
+- add support for Kubernetes
+- configure Nginx as http server and a reverse proxy for the API calls
