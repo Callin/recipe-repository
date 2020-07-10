@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
+import xyz.vegaone.reciperepository.configuration.security.RecipeRepositoryBasicAuthenticationEntryPoint;
 import xyz.vegaone.reciperepository.dto.Ingredient;
 import xyz.vegaone.reciperepository.service.IngredientService;
 
@@ -25,10 +27,14 @@ class IngredientControllerTest {
     @MockBean
     private IngredientService ingredientService;
 
+    @MockBean
+    private RecipeRepositoryBasicAuthenticationEntryPoint recipeRepositoryBasicAuthenticationEntryPoint;
+
     @Autowired
     private MockMvc mockMvc;
 
     @Test
+    @WithMockUser
     void createShouldCreateIngredient() throws Exception {
         Ingredient ingredient = getIngredient();
         String content = objectMapper.writeValueAsString(ingredient);
@@ -42,7 +48,9 @@ class IngredientControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().string(content));
     }
+
     @Test
+    @WithMockUser
     void createShouldCreateIngredientInvalidBody() throws Exception {
         Ingredient ingredient = new Ingredient();
         String content = objectMapper.writeValueAsString(ingredient);
@@ -60,6 +68,7 @@ class IngredientControllerTest {
     }
 
     @Test
+    @WithMockUser
     void updateShouldUpdateTheIngredient() throws Exception {
         Ingredient ingredient = getIngredient();
         ingredient.setId(1);
@@ -76,6 +85,7 @@ class IngredientControllerTest {
     }
 
     @Test
+    @WithMockUser
     void getShouldGetTheIngredient() throws Exception {
         Ingredient ingredient = getIngredient();
         ingredient.setId(1);
@@ -90,6 +100,7 @@ class IngredientControllerTest {
     }
 
     @Test
+    @WithMockUser
     void deleteShouldDeleteIngredient() throws Exception {
         doNothing().when(ingredientService).delete(1);
 

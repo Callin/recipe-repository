@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
+import xyz.vegaone.reciperepository.configuration.security.RecipeRepositoryBasicAuthenticationEntryPoint;
 import xyz.vegaone.reciperepository.dto.Recipe;
 import xyz.vegaone.reciperepository.service.RecipeService;
 
@@ -30,7 +32,11 @@ class RecipeControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
+    @MockBean
+    private RecipeRepositoryBasicAuthenticationEntryPoint recipeRepositoryBasicAuthenticationEntryPoint;
+
     @Test
+    @WithMockUser
     void createShouldCreateRecipe() throws Exception {
         Recipe recipe = buildRecipe();
         String payload = objectMapper.writeValueAsString(recipe);
@@ -46,6 +52,7 @@ class RecipeControllerTest {
     }
 
     @Test
+    @WithMockUser
     void updateShouldUpdateRecipe() throws Exception {
         Recipe recipe = buildRecipe();
         recipe.setId(1);
@@ -62,6 +69,7 @@ class RecipeControllerTest {
     }
 
     @Test
+    @WithMockUser
     void getShouldGetRecipe() throws Exception {
         Recipe recipe = buildRecipe();
         recipe.setId(1);
@@ -76,6 +84,7 @@ class RecipeControllerTest {
     }
 
     @Test
+    @WithMockUser
     void deleteShouldDeleteRecipe() throws Exception {
         doNothing().when(recipeService).delete(1);
 
