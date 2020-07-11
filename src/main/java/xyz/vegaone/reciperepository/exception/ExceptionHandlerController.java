@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import javax.validation.ConstraintViolationException;
 import java.time.LocalDateTime;
 import java.util.stream.Collectors;
 
@@ -26,6 +27,18 @@ public class ExceptionHandlerController {
                         .stream()
                         .map(DefaultMessageSourceResolvable::getDefaultMessage)
                         .collect(Collectors.joining("; ")));
+
+        return new ResponseEntity<>(recipeErrorResponse, HttpStatus.BAD_REQUEST);
+    }
+
+    @ResponseStatus(value = HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(ConstraintViolationException.class)
+    public ResponseEntity<RecipeErrorResponse> handleConstraintViolationException(ConstraintViolationException exception) {
+        RecipeErrorResponse recipeErrorResponse = new RecipeErrorResponse();
+
+        recipeErrorResponse.setStatus(HttpStatus.BAD_REQUEST.value());
+        recipeErrorResponse.setTimestamp(LocalDateTime.now());
+        recipeErrorResponse.setError(exception.getMessage());
 
         return new ResponseEntity<>(recipeErrorResponse, HttpStatus.BAD_REQUEST);
     }

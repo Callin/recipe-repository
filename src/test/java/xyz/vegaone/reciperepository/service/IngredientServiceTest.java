@@ -2,7 +2,6 @@ package xyz.vegaone.reciperepository.service;
 
 import com.github.dozermapper.core.DozerBeanMapperBuilder;
 import com.github.dozermapper.core.Mapper;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -43,11 +42,6 @@ class IngredientServiceTest {
         assertNotNull(savedIngredient);
     }
 
-    @Test()
-    void testCreate_SendingNull() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> ingredientService.create(null));
-    }
-
     @Test
     void testUpdate_Ok() {
         // given
@@ -62,10 +56,6 @@ class IngredientServiceTest {
         assertNotNull(savedIngredient);
     }
 
-    @Test()
-    void testUpdate_SendingNull() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> ingredientService.update(null));
-    }
 
     private Ingredient buildIngredientDto(Integer id) {
         Ingredient ingredient = new Ingredient();
