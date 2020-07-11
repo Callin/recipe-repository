@@ -6,10 +6,14 @@ Development work
 - build a UI client (Angular based, Bootstrap maybe?)
 - add support for images
 - integrate with RDS/MariaDb?
--
+- create the microservice ecosystem
+    - create the Gateway microservice
+    - create the Security microservice
+    - create the Registry microservice
+    - create the Springboot admin microservice
 
 Infrastructure work
 - add support for Terraform
 - add support for Docker
 - add support for Kubernetes
-- configure Nginx as http server and a reverse proxy for the API calls
+- configure Nginx as http server and a reverse proxy for the API calls. Should be done after the UI client is built
