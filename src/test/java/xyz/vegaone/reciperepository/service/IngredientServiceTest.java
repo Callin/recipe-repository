@@ -25,7 +25,7 @@ class IngredientServiceTest {
     public static void before() {
         mapper = DozerBeanMapperBuilder.buildDefault();
         ingredientRepository = Mockito.mock(IngredientRepository.class);
-        ingredientService = new IngredientService(ingredientRepository, mapper);
+        ingredientService = new IngredientService(ingredientRepository);
     }
 
     @Test

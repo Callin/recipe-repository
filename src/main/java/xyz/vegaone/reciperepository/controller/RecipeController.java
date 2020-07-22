@@ -5,6 +5,8 @@ import org.springframework.web.bind.annotation.*;
 import xyz.vegaone.reciperepository.dto.Recipe;
 import xyz.vegaone.reciperepository.service.RecipeService;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/recipe")
 public class RecipeController {
@@ -28,6 +30,11 @@ public class RecipeController {
     @GetMapping("/{id}")
     public Recipe get(@PathVariable Integer id) {
         return recipeService.get(id);
+    }
+
+    @GetMapping("/all")
+    public List<Recipe> getAll() {
+        return recipeService.getAll();
     }
 
     @DeleteMapping("/{id}")

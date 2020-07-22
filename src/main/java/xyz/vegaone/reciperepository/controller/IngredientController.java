@@ -5,6 +5,7 @@ import xyz.vegaone.reciperepository.dto.Ingredient;
 import xyz.vegaone.reciperepository.service.IngredientService;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("/ingredient")
@@ -29,6 +30,11 @@ public class IngredientController {
     @GetMapping("/{id}")
     public Ingredient get(@PathVariable Integer id) {
         return ingredientService.get(id);
+    }
+
+    @GetMapping("/all")
+    public List<Ingredient> getAll() {
+        return ingredientService.getAll();
     }
 
     @DeleteMapping("/{id}")

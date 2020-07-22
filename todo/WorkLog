@@ -16,4 +16,7 @@ Infrastructure work
 - add support for Terraform
 - add support for Docker
 - add support for Kubernetes
+- add JMeter tests. Used to execute performance testing, load testing and functional testing of the app
 - configure Nginx as http server and a reverse proxy for the API calls. Should be done after the UI client is built
+    - DONE on local machine
+    - on dev

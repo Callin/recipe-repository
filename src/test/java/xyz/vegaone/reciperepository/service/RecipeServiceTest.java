@@ -28,7 +28,7 @@ class RecipeServiceTest {
     public static void before() {
         mapper = DozerBeanMapperBuilder.buildDefault();
         recipeRepository = Mockito.mock(RecipeRepository.class);
-        recipeService = new RecipeService(recipeRepository, mapper);
+        recipeService = new RecipeService(recipeRepository);
     }
 
     @Test
